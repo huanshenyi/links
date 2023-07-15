@@ -5,6 +5,16 @@ import { api } from "src/utils/api";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  // データ取得
+  const {isLoading, error, data, refetch} = api.example.getAll.useQuery();
+  const createMutation = api.example.create.useMutation()
+
+  if(error) {
+    return <>Error</>
+  }
+  const handelContentAdd = () => {
+    createMutation.mutate({content: "テスト"}, {onSuccess: () => refetch()})
+  }
 
   return (
     <>
@@ -46,6 +56,14 @@ export default function Home() {
             <p className="text-2xl text-white">
               {hello.data ? hello.data.greeting : "Loading tRPC query..."}
             </p>
+            <div>
+              {
+                isLoading ? "loading" : (data?.map((d) => {
+                  return <div>{d.content}</div>
+                }))
+              }
+            </div>
+            <div onClick={() => handelContentAdd()}>追加</div>
             <AuthShowcase />
           </div>
         </div>
