@@ -1,19 +1,25 @@
-import { signIn, signOut, useSession } from "next-auth/react";
-import Head from "next/head";
-import Link from "next/link";
-import { api } from "src/utils/api";
+import { signIn, signOut, useSession } from "next-auth/react"
+import Head from "next/head"
+import Link from "next/link"
+import { api } from "src/utils/api"
+import { IndexPage } from "src/features/home"
 
 export default function Home() {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  // const hello = api.example.hello.useQuery({ text: "from tRPC" })
+  return (
+    <>
+      <IndexPage />
+    </>
+  )
   // データ取得
-  const {isLoading, error, data, refetch} = api.example.getAll.useQuery();
+  const { isLoading, error, data, refetch } = api.example.getAll.useQuery()
   const createMutation = api.example.create.useMutation()
 
-  if(error) {
+  if (error) {
     return <>Error</>
   }
   const handelContentAdd = () => {
-    createMutation.mutate({content: "テスト"}, {onSuccess: () => refetch()})
+    createMutation.mutate({ content: "テスト" }, { onSuccess: () => void refetch() })
   }
 
   return (
@@ -36,8 +42,8 @@ export default function Home() {
             >
               <h3 className="text-2xl font-bold">First Steps →</h3>
               <div className="text-lg">
-                Just the basics - Everything you need to know to set up your
-                database and authentication.
+                Just the basics - Everything you need to know to set up your database and
+                authentication.
               </div>
             </Link>
             <Link
@@ -47,21 +53,17 @@ export default function Home() {
             >
               <h3 className="text-2xl font-bold">Documentation →</h3>
               <div className="text-lg">
-                Learn more about Create T3 App, the libraries it uses, and how
-                to deploy it.
+                Learn more about Create T3 App, the libraries it uses, and how to deploy it.
               </div>
             </Link>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-            </p>
             <div>
-              {
-                isLoading ? "loading" : (data?.map((d) => {
-                  return <div>{d.content}</div>
-                }))
-              }
+              {isLoading
+                ? "loading"
+                : data?.map((d, i) => {
+                    return <div key={i}>{d.content}</div>
+                  })}
             </div>
             <div onClick={() => handelContentAdd()}>追加</div>
             <AuthShowcase />
@@ -69,16 +71,16 @@ export default function Home() {
         </div>
       </main>
     </>
-  );
+  )
 }
 
 function AuthShowcase() {
-  const { data: sessionData } = useSession();
+  const { data: sessionData } = useSession()
 
   const { data: secretMessage } = api.example.getSecretMessage.useQuery(
     undefined, // no input
-    { enabled: sessionData?.user !== undefined }
-  );
+    { enabled: sessionData?.user !== undefined },
+  )
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">
@@ -93,5 +95,5 @@ function AuthShowcase() {
         {sessionData ? "Sign out" : "Sign in"}
       </button>
     </div>
-  );
+  )
 }
