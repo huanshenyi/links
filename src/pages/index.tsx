@@ -1,10 +1,15 @@
 import { signIn, signOut, useSession } from "next-auth/react"
+import { useEffect } from "react"
 import Head from "next/head"
 import Link from "next/link"
 import { api } from "src/utils/api"
 import { IndexPage } from "src/features/home"
+import { themeChange } from "theme-change"
 
 export default function Home() {
+  useEffect(() => {
+    themeChange(false)
+  }, [])
   // const hello = api.example.hello.useQuery({ text: "from tRPC" })
   return (
     <>

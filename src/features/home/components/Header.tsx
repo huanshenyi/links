@@ -1,6 +1,8 @@
 import React from "react"
 import Link from "next/link"
 
+import { ThemeSwitch } from "src/components"
+
 export default function Header() {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
 
@@ -12,12 +14,10 @@ export default function Header() {
             href="/"
             className="focus:shadow-outline rounded-lg text-lg font-semibold tracking-widest focus:outline-none"
           >
-            <h1 className="Avenir md:text-4x1 text-4xl tracking-tighter text-gray-900 lg:text-3xl">
-              LIMKS.ME
-            </h1>
+            <h1 className="Avenir md:text-4x1 text-4xl tracking-tighter lg:text-3xl">LINKS.ME</h1>
           </Link>
           <button
-            className="cursor-pointer px-3 py-1 leading-none text-white outline-none focus:outline-none md:hidden "
+            className="cursor-pointer px-3 py-1 leading-none outline-none focus:outline-none md:hidden "
             type="button"
             aria-label="button"
             onClick={() => setNavbarOpen(!navbarOpen)}
@@ -46,21 +46,23 @@ export default function Header() {
               <li>
                 <Link
                   href="/"
-                  className="flex items-center px-5 py-3 font-medium text-gray-600 transition duration-150 ease-in-out hover:text-gray-900"
-                >
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/"
-                  className="flex items-center px-5 py-3 font-medium text-gray-600 transition duration-150 ease-in-out hover:text-gray-900"
+                  className="flex items-center px-5 py-3 font-medium transition duration-150 ease-in-out"
                 >
                   About Us
                 </Link>
               </li>
               <li>
-                <button className="btn-primary btn">Login</button>
+                <div className="mr-1 flex items-center py-5 pl-3 font-medium transition duration-150 ease-in-out">
+                  <button className="btn-primary btn">Log in</button>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-center font-medium transition duration-150 ease-in-out">
+                  <button className="btn-accent btn">Sign up free</button>
+                </div>
+              </li>
+              <li>
+                <ThemeSwitch />
               </li>
             </ul>
           </nav>

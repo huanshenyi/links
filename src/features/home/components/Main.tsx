@@ -10,14 +10,20 @@ const Main = () => {
       <div className="mx-auto flex max-w-7xl flex-col items-center px-5 py-24 md:flex-row">
         <div className="mb-40 flex flex-col items-center pt-6 text-center md:ml-24 md:w-1/2 md:items-start md:text-left lg:flex-grow">
           <h1 className="Avenir xl:w-2/2 mb-5 items-center text-5xl text-gray-900 sm:text-6xl">
-            We are making Stunning Websites
+            Everything you are.In one, simple link in bio.
           </h1>
           <p className="mb-4 text-lg text-gray-600 xl:w-3/4">
-            nine4 is a free to use website template for websites made with Next.js and styled with
-            Tailwind CSS
+            Join 35M+ people using Linktree for their link in bio. One link to help you share
+            everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and
+            other social media profiles.
           </p>
           <div className="flex justify-center">
-            <button className="btn-neutral btn">Neutral</button>
+            <input
+              type="text"
+              placeholder="linkme/yourname"
+              className="input-bordered input mr-2 w-full max-w-xs"
+            />
+            <button className="btn-neutral btn">Claim your Link</button>
           </div>
         </div>
         <div className="mb-0 mr-48 sm:mb-28 sm:mr-0 md:pl-10 lg:mb-0 xl:mr-44">
