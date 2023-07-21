@@ -1,3 +1,4 @@
+import Link from "next/link"
 import OAuthFrom from "./OAuthForm"
 
 export default function LoginForm() {
@@ -55,12 +56,12 @@ export default function LoginForm() {
         <OAuthFrom />
         <p className="mt-6 text-center text-sm text-gray-400">
           Don&#x27;t have an account yet?
-          <a
+          <Link
             href="/signup"
             className="text-blue-500 hover:underline focus:underline focus:outline-none"
           >
             sign in
-          </a>
+          </Link>
         </p>
       </div>
     </div>

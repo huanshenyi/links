@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export const SignupForm: React.FC = () => {
   return (
     <div className="flex-1">
@@ -53,12 +55,12 @@ export const SignupForm: React.FC = () => {
 
         <p className="mt-6 text-center text-sm text-gray-400">
           Don&#x27;t have an account yet?
-          <a
+          <Link
             href="/login"
             className="text-blue-500 hover:underline focus:underline focus:outline-none"
           >
             log in
-          </a>
+          </Link>
           .
         </p>
       </div>

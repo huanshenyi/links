@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 export default function OAuthFrom() {
   return (
     <div className="mt-8 grid space-y-4">
@@ -6,7 +8,7 @@ export default function OAuthFrom() {
 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
       >
         <div className="relative flex items-center justify-center space-x-4">
-          <img
+          <Image
             src="https://tailus.io/sources/blocks/social/preview/images/google.svg"
             className="absolute left-0 w-5"
             alt="google logo"
