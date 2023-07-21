@@ -53,7 +53,9 @@ export default function Header() {
               </li>
               <li>
                 <div className="mr-1 flex items-center py-5 pl-3 font-medium transition duration-150 ease-in-out">
-                  <button className="btn-primary btn">Log in</button>
+                  <Link href="/login" type="button" className="btn-primary btn">
+                    Log in
+                  </Link>
                 </div>
               </li>
               <li>
