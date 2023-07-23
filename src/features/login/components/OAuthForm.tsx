@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { signIn } from "next-auth/react"
 
 export default function OAuthFrom() {
   return (
@@ -10,6 +11,8 @@ hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
         <div className="relative flex items-center justify-center space-x-4">
           <Image
             src="https://tailus.io/sources/blocks/social/preview/images/google.svg"
+            width="0"
+            height="0"
             className="absolute left-0 w-5"
             alt="google logo"
           />
@@ -21,6 +24,7 @@ hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
       <button
         className="group h-12 rounded-full border-2 border-gray-300 px-6 transition duration-300 
 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
+        onClick={() => void signIn("github")}
       >
         <div className="relative flex items-center justify-center space-x-4">
           <svg
