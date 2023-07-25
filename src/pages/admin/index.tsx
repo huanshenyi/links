@@ -1,5 +1,6 @@
 import type { GetServerSideProps } from "next"
-import { getSession, signOut } from "next-auth/react"
+import { getSession } from "next-auth/react"
+import { AdminPage } from "src/features/admin"
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context)
@@ -25,15 +26,12 @@ interface Iprops {
   user: User
 }
 
-const userPage: React.FC<Iprops> = ({ user }) => {
+const adminPage: React.FC<Iprops> = ({ user }) => {
   return (
     <div>
-      <div>{user.name}</div>
-      <div>{user.id}</div>
-      <div>user page</div>
-      <button onClick={() => void signOut()}>logout</button>
+      <AdminPage user={user} />
     </div>
   )
 }
 
-export default userPage
+export default adminPage

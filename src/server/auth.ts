@@ -36,7 +36,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     redirect: ({ url, baseUrl }) => {
       if (url === "/login") return `${baseUrl}/${url}`
-      return `${baseUrl}/user`
+      return `${baseUrl}/admin`
     },
     session: ({ session, user }) => ({
       ...session,
